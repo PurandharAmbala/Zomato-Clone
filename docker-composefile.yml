@@ -1,0 +1,20 @@
+services:
+  zomato:
+    image: zomato:latest
+    container_name: zomato1
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - zomato-volume:/usr/share/nginx/html
+    networks:
+      - zomato-network
+
+volumes:
+  zomato-volume:
+    name: zomato-volume
+
+networks:
+  zomato-network:
+    name: zomato-network
+    driver: bridge
